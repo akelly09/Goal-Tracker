@@ -1,48 +1,90 @@
-// set up ========================
-var express  = require('express');
-var app      = express();                               // create our app w/ express
+'use strict';
 
+// set up ========================
+var express   = require('express');
 var Datastore = require('nedb');
+var ObjectID  = require('mongodb').ObjectID;
+var app       = express();
 var db        = {};
 
 
+
+/*
 db.goals = new Datastore({ filename: __dirname + '/db/goal.json', autoload: true });
+
+var id = new ObjectID().toHexString();
+
+var milestone = {
+  id: id,
+  title:"Read ch.1 of book",
+  percentage:50,
+  completeDate:new Date()
+};
 
 var goal = {
   title: 'Learn Japanese',
   completeDate: new Date(),
-  milestones: []
+  milestones: [milestone]
 };
 
-var milestone = {
-    title:"Read Ch. 1 of book",
-    percentage:50,
-    completeDate:new Date()
-};
+
+//get goals and milestones 
+app.get('/api/goals', function(req, res) {
+  db.goals.find({}, function (err, docs) {
+    res.json(docs);
+  });
+});
+
+//create goals and milestones 
+app.post('/api/goals', function(req, res) {
+
+});
+
+//create milestone 
+app.post('/api/goals/:goal_id', function(req, res) {
+
+});
+
+//delete goal 
+app.delete('/api/goals/:goal_id', function(req, res) {
+
+});
+
+//delete milestone 
+app.delete('/api/goals/:goal_id/:milestone_id', function(req, res) {
+
+});
+
+
+
+app.get('/', function(req, res) {
+  res.sendFile('app/index.html' , { root : __dirname});
+  //res.sendfile('./app/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+});
 
 
 //inserts a goal
 //db.goals.insert(goal);
 
 //inserts a milestone
-//db.goals.update({_id:"SBVu5qSexbAXZPrV"}, {$push:{milestones:milestone}});  
+//db.goals.update({_id:"BwMFKOMq6hGRAU15"}, {$push:{milestones:milestone}});  
 
 
 /*
 REST API's to create:
-- get goals and milestones
-- create goal
-- create milestone
-- delete goal
-- delete milestones
-*/
+X GET    /api/goals                        - get goals and milestones 
+- POST   /api/goals                        - create goal
+- POST   /api/goals/:goal_id               - create milestone
+- DELETE /api/goals/:goal_id               - delete goal
+- DELETE /api/goals/:goal_id/:milestone_id - delete milestones
+
 
 
 // listen (start app with node server.js) ======================================
 app.listen(8080);
 console.log("App listening on port 8080");
 
-
+*/
 
 
 
