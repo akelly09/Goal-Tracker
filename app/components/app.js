@@ -1,36 +1,23 @@
-var app = angular.module('flapperNews', []);
+var app = angular.module('GoalTracker', ['ui.router','Home']);
 
 app.controller('MainCtrl', [
 '$scope',
 function($scope){
-  $scope.test = 'Hello world!';
+  $scope.test = 'Hello Pie!';
 }]);
 
-/*
 
+app.config([
+'$stateProvider',
+'$urlRouterProvider',
+function($stateProvider, $urlRouterProvider) {
 
-app.controller('MainCtrl', [
-'$scope',
-function($scope){
-  $scope.test = 'Hello world!';
+  $stateProvider
+    .state('home', {
+      url: '/home',
+      templateUrl: 'components/home/home.html'
+      ,controller: 'homeCtrl'
+    });
+
+  $urlRouterProvider.otherwise('home');
 }]);
-*/
-
-/*
-var app = angular.module('GoalTracker', []);
-
-app.controller('myCtrl', function($scope) {
-    $scope.firstName= "John";
-    $scope.lastName= "Doe";
-});
-*/
-
-/*
-var app = angular.module('GoalTracker', []);
-
-
-app.controller('myCtrl', function($scope) {
-    $scope.firstName= "John";
-    $scope.lastName= "Doe";
-});
-*/
