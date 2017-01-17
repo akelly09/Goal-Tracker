@@ -1,5 +1,11 @@
-angular.module('Home', []).controller('homeCtrl', function($scope) {
+angular.module('Home', ['HomeService']).controller('homeCtrl', ['$scope', 'goalService', function($scope, goalService) {
+  
+	$scope.goals = [];
 
-	$scope.tagline = 'To the moon and back!';	
 
-});
+	goalService.getGoals().success(function(data){
+		$scope.goals = data;
+		//console.log(data);
+	});
+
+}]);
