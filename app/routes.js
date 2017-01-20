@@ -65,6 +65,9 @@ module.exports = function(app) {
 
   //delete milestone 
   app.delete('/api/goals/:goal_id/:milestone_id', function(req, res) {
+      db.goals.remove({ _id: req.params.goal_id, "milestones.id": req.params.milestone_id}, function (err, numRemoved) {
+        res.send('Removed ' + numRemoved + ' milestone.');
+    });
   });
 
 

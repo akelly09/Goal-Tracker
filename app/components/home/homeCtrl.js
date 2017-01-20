@@ -14,9 +14,18 @@ angular.module('Home', ['HomeService']).controller('homeCtrl', ['$scope', 'goalS
 		completeDate:new Date()
 	};
 
+
+	/*
+	goalService.deleteMilestone('2I3gAz2f49sos3Gg', '5877ed3ec17c662cb839adf9').success(function(data){
+		console.log(data);
+	});
+	*/
+
+	/*
 	goalService.insertMilestone('R5PeYRec4tjEAJxM', milestone).success(function(data){
 		console.log(data);
 	});
+	*/
 
 	/*
 	goalService.deleteGoal('pm0V8yLxWMTM9xKo').success(function(data){

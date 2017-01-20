@@ -20,7 +20,9 @@ homeServices.factory('goalService', ['$http', function($http) {
     return $http.post('/api/goals/' + goal_id, milestone);
   }
 
-  goalService.deleteMilestone = function(){}
+  goalService.deleteMilestone = function(goal_id, milestone_id){
+    return $http.delete('/api/goals/' + goal_id + '/' + milestone_id);
+  }
 
 
   return goalService; 
