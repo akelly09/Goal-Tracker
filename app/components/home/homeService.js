@@ -8,11 +8,17 @@ homeServices.factory('goalService', ['$http', function($http) {
     return $http.get('/api/goals');
   }
 
-  goalService.createGoal = function(){}
+  goalService.createGoal = function(goal){
+    return $http.post('/api/goals',goal);
+  }
 
-  goalService.deleteGoal = function(){}
+  goalService.deleteGoal = function(goal_id){
+    return $http.delete('/api/goals/' + goal_id);
+  }
 
-  goalService.createMilestone = function(){}
+  goalService.insertMilestone = function(goal_id, milestone){
+    return $http.post('/api/goals/' + goal_id, milestone);
+  }
 
   goalService.deleteMilestone = function(){}
 
