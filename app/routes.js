@@ -39,6 +39,22 @@ module.exports = function(app) {
   });
 
 
+  //get a goal and its milestones
+  app.get('/api/goals/:goal_id', function(req, res) {
+    db.goals.find({_id: req.params.goal_id}, function (err, docs) {
+
+      var json = docs;
+
+      if(json.length > 0){
+        json = json[0];
+      }
+
+      res.json(json);
+
+    });
+  });
+
+
   //create goals and milestones 
   app.post('/api/goals', function(req, res) {
     db.goals.insert(req.body);
@@ -65,14 +81,16 @@ module.exports = function(app) {
 
   //delete milestone 
   app.delete('/api/goals/:goal_id/:milestone_id', function(req, res) {
-      db.goals.remove({ _id: req.params.goal_id, "milestones.id": req.params.milestone_id}, function (err, numRemoved) {
-        res.send('Removed ' + numRemoved + ' milestone.');
+
+    db.goals.update({ _id: req.params.goal_id }, { $pull: { milestones: {id: req.params.milestone_id} } }, {}, function () {
+      res.send('Removed a milestone.');
     });
+
   });
 
 
   //default load index page
-  app.get('*', function(req, res) {
+  app.get('/', function(req, res) {
     res.sendFile('index.html' , { root : __dirname});
   });
 
@@ -87,5 +105,5 @@ X POST   /api/goals                        - create goal
 X DELETE /api/goals/:goal_id               - delete goal
 (Milestones)
 X POST   /api/goals/:goal_id               - create milestone
-- DELETE /api/goals/:goal_id/:milestone_id - delete milestone
+X DELETE /api/goals/:goal_id/:milestone_id - delete milestone
 */

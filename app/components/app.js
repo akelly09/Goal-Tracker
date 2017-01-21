@@ -1,4 +1,4 @@
-var app = angular.module('GoalTracker', ['ui.router','Home']);
+var app = angular.module('GoalTracker', ['ui.router','Home','Goals']);
 
 app.controller('MainCtrl', [
 '$scope',
@@ -15,8 +15,16 @@ function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('home', {
       url: '/home',
-      templateUrl: 'components/home/home.html'
-      ,controller: 'homeCtrl'
+      templateUrl: 'components/home/partial-home.html',
+      controller: 'homeCtrl'
+    }).state('viewGoal', {
+      url: '/viewGoal/{goal_id}',
+      templateUrl: 'components/goals/partial-view-goal.html',
+      controller: 'viewGoalCtrl'
+    }).state('editGoal', {
+      url: '/editGoal/{goal_id}',
+      templateUrl: 'components/goals/partial-edit-goal.html'
+      //,controller: 'homeCtrl'
     });
 
   $urlRouterProvider.otherwise('home');

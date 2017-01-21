@@ -8,6 +8,10 @@ homeServices.factory('goalService', ['$http', function($http) {
     return $http.get('/api/goals');
   }
 
+  goalService.getGoal = function(goal_id){
+    return $http.get('/api/goals/' + goal_id);
+  }
+
   goalService.createGoal = function(goal){
     return $http.post('/api/goals',goal);
   }

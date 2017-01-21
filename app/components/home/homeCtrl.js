@@ -14,12 +14,19 @@ angular.module('Home', ['HomeService']).controller('homeCtrl', ['$scope', 'goalS
 		completeDate:new Date()
 	};
 
+	var goal_id      = 'R5PeYRec4tjEAJxM';
+	var milestone_id = '5881753e8f92dd15f0cc0935';
+
+	$scope.displayGoal = function(){
+		console.log('Display goal and milestones');
+	}
 
 	/*
-	goalService.deleteMilestone('2I3gAz2f49sos3Gg', '5877ed3ec17c662cb839adf9').success(function(data){
+	goalService.deleteMilestone(goal_id, milestone_id).success(function(data){
 		console.log(data);
 	});
 	*/
+	
 
 	/*
 	goalService.insertMilestone('R5PeYRec4tjEAJxM', milestone).success(function(data){
@@ -39,11 +46,9 @@ angular.module('Home', ['HomeService']).controller('homeCtrl', ['$scope', 'goalS
 	});
 	*/
 
-	/*
 	goalService.getGoals().success(function(data){
 		$scope.goals = data;
 		//console.log(data);
 	});
-	*/
 
 }]);
