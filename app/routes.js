@@ -90,9 +90,11 @@ module.exports = function(app) {
 
 
   //default load index page
-  app.get('/', function(req, res) {
+  ///*
+  app.get('*', function(req, res) {
     res.sendFile('index.html' , { root : __dirname});
   });
+  //*/
 
 };
 
