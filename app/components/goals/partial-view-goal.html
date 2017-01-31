@@ -1,2 +1,25 @@
 <h2> View Goal - {{goal.title}} </h2>
-{{goal.completeDate}}
+<div> {{goal.completeDate}} </div>
+
+<br/>
+
+<a ui-sref="editGoal({ goal_id: goal['_id'] })"> Edit goal </a><br/>
+
+<h2> Milestones </h2>
+
+<li ng-repeat="milestone in goal.milestones" style="list-style: none;">
+
+  <div> Title </div>
+  <div ng-bind="milestone.title"> </div>
+
+  <br/>
+  <div> Date to complete </div>
+  <div ng-bind="milestone.completeDate"> </div>
+
+  <br/>
+  <div> % Assigned </div>
+  <div ng-bind="milestone.percentage"> </div>
+
+  <br/>
+
+</li>

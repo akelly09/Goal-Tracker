@@ -24,7 +24,7 @@ function($stateProvider, $urlRouterProvider) {
     }).state('editGoal', {
       url: '/editGoal/{goal_id}',
       templateUrl: 'components/goals/partial-edit-goal.html'
-      //,controller: 'homeCtrl'
+      ,controller: 'editGoalCtrl'
     }).state('createGoal', {
       url: '/createGoal',
       templateUrl: 'components/goals/partial-create-goal.html'
