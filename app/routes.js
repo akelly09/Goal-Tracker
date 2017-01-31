@@ -89,9 +89,6 @@ module.exports = function(app) {
   });
 
 
-  //update goal
-
-
   //default load index page
   ///*
   app.get('*', function(req, res) {

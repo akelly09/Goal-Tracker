@@ -2,11 +2,6 @@
 <ul>
   <li ng-repeat="goal in goals" ng-click="displayGoal()">
     <a ui-sref="viewGoal({ goal_id: goal['_id'] })"> {{goal.title}} - {{goal.completeDate}} </a>
+    <!--<a href="#/viewGoal/1"> {{goal.title}} - {{goal.completeDate}} </a>-->
   </li>
 </ul>
-
-<div>
-  <button>
-    <a ui-sref="createGoal()" style="text-decoration:none;color:black;"> Create goal </a>
-  </button>
-</div>

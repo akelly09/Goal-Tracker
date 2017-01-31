@@ -18,6 +18,7 @@ app.controller('createGoalCtrl', ['$scope','goalService', function($scope,goalSe
     milestones:[{}]
   };
 
+
   $scope.createGoal = function(){
 
     goalService.createGoal($scope.goal).success(function(data){
@@ -32,26 +33,3 @@ app.controller('createGoalCtrl', ['$scope','goalService', function($scope,goalSe
   }
 
 }]);
-
-
-app.controller('editGoalCtrl', ['$scope','$http','$stateParams','$state', 'goalService', function($scope,$http,$stateParams,$state,goalService) {
-
-  $scope.goal = {};
-
-  goalService.getGoal($stateParams.goal_id).success(function(data){
-		$scope.goal = data;
-	});
-
-}]);
-
-
-app.directive("formatDate", function(){
-  return {
-   require: 'ngModel',
-    link: function(scope, elem, attr, modelCtrl) {
-      modelCtrl.$formatters.push(function(modelValue){
-        return new Date(modelValue);
-      })
-    }
-  }
-})
