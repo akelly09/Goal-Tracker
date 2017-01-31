@@ -2,27 +2,35 @@
   <h2> Create Goal </h2>
 
   <div> Title </div>
-  <input type="text" ng-bind="goal.title">
+  <input type="text" ng-model="goal.title">
 
   <br/><br/>
   <div> Date to complete </div>
-  <input type="date" ng-bind="goal.completeDate">
+  <input type="date" ng-model="goal.completeDate">
 
 
   <h2> Add Milestones </h2>
 
-  <div> Title </div>
-  <input type="text">
-  <br/>
+  <div ng-click="addMilestone()" style="text-decoration:underline; color:blue"> Add milestone </div><br/>
 
-  <br/>
-  <div> Date to complete </div>
-  <input type="date">
+  <li ng-repeat="milestone in goal.milestones" style="list-style: none;">
 
-  <br/><br/>
-  <div> % Assigned </div>
-  <input type="number">
+    <div> Title </div>
+    <input type="text" ng-model="milestone.title">
+    <br/>
 
+    <br/>
+    <div> Date to complete </div>
+    <input type="date" ng-model="milestone.completeDate">
+
+    <br/><br/>
+    <div> % Assigned </div>
+    <input type="number" ng-model="milestone.percentage">
+
+  </li>
+
+
+  <!-- Create Goal -->
   <br/><br/><br/>
-  <input type="button" value="Click Me!" ng-click="btnClick()">
+  <input type="button" value="Create goal" ng-click="createGoal()">
 </div>

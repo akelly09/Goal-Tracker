@@ -28,7 +28,7 @@ function($stateProvider, $urlRouterProvider) {
     }).state('createGoal', {
       url: '/createGoal',
       templateUrl: 'components/goals/partial-create-goal.html'
-      //,controller: 'homeCtrl'
+      ,controller: 'createGoalCtrl'
     });
 
   $urlRouterProvider.otherwise('home');
