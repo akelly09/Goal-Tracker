@@ -9,38 +9,40 @@ app.controller('viewGoalCtrl', ['$scope','$http','$stateParams','$state', 'goalS
 		$scope.goal = data;
 	});
 
-  $scope.deleteMilestone = function(goal_id, milestone_id){
-
-    //console.log('goal_id: ' + goal_id + " milestone_id: " + milestone_id);
-
-		goalService.deleteMilestone(goal_id, milestone_id).success(function(data){
-			alert('This milestone has been deleted');
-		});
-
-	}
-
 }]);
 
 
-app.controller('createGoalCtrl', ['$scope','goalService', function($scope,goalService) {
+app.controller('createGoalCtrl', ['$scope','goalService', '$state', function($scope, goalService, $state) {
 
   $scope.goal = {
-    milestones:[{}]
+    milestones:[{
+      completeDate: new Date(),
+      percentage: 100
+    }]
   };
+
+  $scope.goal.completeDate = new Date();
 
   $scope.createGoal = function(){
 
     goalService.createGoal($scope.goal).success(function(data){
-      alert('created a goal');
-      console.log('created goal:');
       console.log(data);
+      $state.go('home', {});
     });
 
   }
 
   $scope.addMilestone = function(){
-    $scope.goal.milestones.push({});
+    $scope.goal.milestones.push({
+      completeDate: new Date(),
+      percentage: 100
+    });
   }
+
+  //remove milestone from ui
+   $scope.deleteMilestone = function(idx){
+    $scope.goal.milestones.splice(idx, 1);
+	}
 
 }]);
 
@@ -56,25 +58,29 @@ app.controller('editGoalCtrl', ['$scope','$http','$stateParams','$state', 'goalS
   $scope.editGoal = function(){
 
     goalService.editGoal($stateParams.goal_id, $scope.goal).success(function(data){
-      //alert('created a goal');
-      //console.log('edit goal');
       console.log(data);
+      $state.go('home', {});
     });
 
   }
 
   $scope.addMilestone = function(){
-    $scope.goal.milestones.push({});
+    $scope.goal.milestones.push({
+      completeDate: new Date(),
+      percentage: 100
+    });
   }
 
 
   $scope.deleteMilestone = function(goal_id, milestone_id, idx){
 
+    //remove milestone from ui
     $scope.goal.milestones.splice(idx, 1);
 
+    //if this is an existing milestone delete from db
     if(milestone_id){
       goalService.deleteMilestone(goal_id, milestone_id).success(function(data){
-			  alert('This milestone has been deleted');
+        console.log(data);
 		  });
     }
 

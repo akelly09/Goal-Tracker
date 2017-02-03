@@ -1,26 +1,15 @@
 angular.module('Home', ['HomeService']).controller('homeCtrl', ['$scope', 'goalService', function($scope, goalService) {
   
 	$scope.goals = [];
-
-	var goal = {
-		title: 'Learn Japanese',
-		completeDate: new Date(),
-		milestones: []
-	};
-
-	var milestone = {
-		title:"Read ch.1 of book",
-		percentage:50,
-		completeDate:new Date()
-	};
-
 	//var goal_id      = 'R5PeYRec4tjEAJxM';
 	//var milestone_id = '5881753e8f92dd15f0cc0935';
 
-	$scope.deleteGoal = function(goal_id){
+	$scope.deleteGoal = function(goal_id, idx){
+
+		$scope.goals.splice(idx, 1);
 
 		goalService.deleteGoal(goal_id).success(function(data){
-			alert('This goal has been deleted');
+			console.log(data);
 		});
 
 	}

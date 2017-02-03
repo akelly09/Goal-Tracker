@@ -16,6 +16,8 @@
 
   <li ng-repeat="milestone in goal.milestones" style="list-style: none;">
 
+    <div style="margin:10px 0px;color:red;text-decoration: underline;" ng-click="deleteMilestone($index)"> Delete </div>
+
     <div> Title </div>
     <input type="text" ng-model="milestone.title">
     <br/>
