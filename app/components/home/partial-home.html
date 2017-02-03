@@ -1,7 +1,8 @@
 <div> Goals </div>
 <ul>
-  <li ng-repeat="goal in goals" ng-click="displayGoal()">
+  <li ng-repeat="goal in goals">
     <a ui-sref="viewGoal({ goal_id: goal['_id'] })"> {{goal.title}} - {{goal.completeDate}} </a>
+    <span style="margin-left:10px;color:red;" ng-click="deleteGoal(goal['_id'])"> | Delete </span>
   </li>
 </ul>
 

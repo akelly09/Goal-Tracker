@@ -58,6 +58,10 @@ module.exports = function(app) {
   //create goals and milestones 
   app.post('/api/goals', function(req, res) {
     db.goals.insert(req.body);
+    var milestones = req.body.milestones;
+    for(let milestone of milestones){
+      milestone.id = new ObjectID().toHexString();
+    }
     res.send(req.body);
   });
 

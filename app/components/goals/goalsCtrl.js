@@ -9,6 +9,16 @@ app.controller('viewGoalCtrl', ['$scope','$http','$stateParams','$state', 'goalS
 		$scope.goal = data;
 	});
 
+  $scope.deleteMilestone = function(goal_id, milestone_id){
+
+    //console.log('goal_id: ' + goal_id + " milestone_id: " + milestone_id);
+
+		goalService.deleteMilestone(goal_id, milestone_id).success(function(data){
+			alert('This milestone has been deleted');
+		});
+
+	}
+
 }]);
 
 
@@ -21,6 +31,7 @@ app.controller('createGoalCtrl', ['$scope','goalService', function($scope,goalSe
   $scope.createGoal = function(){
 
     goalService.createGoal($scope.goal).success(function(data){
+      alert('created a goal');
       console.log('created goal:');
       console.log(data);
     });
