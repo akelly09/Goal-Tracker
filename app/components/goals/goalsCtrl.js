@@ -53,6 +53,33 @@ app.controller('editGoalCtrl', ['$scope','$http','$stateParams','$state', 'goalS
 		$scope.goal = data;
 	});
 
+  $scope.editGoal = function(){
+
+    goalService.editGoal($stateParams.goal_id, $scope.goal).success(function(data){
+      //alert('created a goal');
+      //console.log('edit goal');
+      console.log(data);
+    });
+
+  }
+
+  $scope.addMilestone = function(){
+    $scope.goal.milestones.push({});
+  }
+
+
+  $scope.deleteMilestone = function(goal_id, milestone_id, idx){
+
+    $scope.goal.milestones.splice(idx, 1);
+
+    if(milestone_id){
+      goalService.deleteMilestone(goal_id, milestone_id).success(function(data){
+			  alert('This milestone has been deleted');
+		  });
+    }
+
+	}
+
 }]);
 
 

@@ -28,6 +28,10 @@ homeServices.factory('goalService', ['$http', function($http) {
     return $http.delete('/api/goals/' + goal_id + '/' + milestone_id);
   }
 
+  goalService.editGoal = function(goal_id, goal){
+    return $http.put('/api/goals/' + goal_id, goal);
+  }
+
 
   return goalService; 
 

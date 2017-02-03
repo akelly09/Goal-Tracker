@@ -93,7 +93,14 @@ module.exports = function(app) {
   });
 
 
-  //update goal
+  //update goal / milestones
+  app.put('/api/goals/:goal_id', function(req, res) {
+
+    db.goals.update({  _id: req.params.goal_id }, { $set: req.body }, { multi: true }, function (err, numReplaced) {
+        res.send('Edited ' + numReplaced + ' goal');
+    });
+
+  });
 
 
   //default load index page
