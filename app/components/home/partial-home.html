@@ -1,13 +1,17 @@
-<div> Goals </div>
-<ul>
-  <li ng-repeat="goal in goals">
-    <a ui-sref="viewGoal({ goal_id: goal['_id'] })"> {{goal.title}} - {{goal.completeDate}} </a>
-    <span style="margin-left:10px;color:red;text-decoration: underline;" ng-click="deleteGoal(goal['_id'], $index)"> Delete </span>
-  </li>
-</ul>
+<div class="content">
 
-<div>
-  <button>
-    <a ui-sref="createGoal()" style="text-decoration:none;color:black;"> Create goal </a>
-  </button>
+  <h2> Your Goals </h2>
+  <ul>
+    <li ng-repeat="goal in goals">
+      <a ui-sref="viewGoal({ goal_id: goal['_id'] })"> {{goal.title}} - {{goal.completeDate}} </a>
+      <span class="deleteBtn" ng-click="deleteGoal(goal['_id'], $index)"> Delete </span>
+    </li>
+  </ul>
+
+  <div>
+    <button>
+      <a ui-sref="createGoal()" class="navBtn"> Create goal </a>
+    </button>
+  </div>
+
 </div>

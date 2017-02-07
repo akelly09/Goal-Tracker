@@ -1,4 +1,5 @@
-<div style="margin-left:10%;">
+<div class="content">
+  
   <h2> Edit Goal </h2>
 
   <div> Title </div>
@@ -10,11 +11,11 @@
 
   <h2> Add Milestones </h2>
 
-  <div ng-click="addMilestone()" style="text-decoration:underline; color:blue"> Add milestone </div><br/>
+  <div ng-click="addMilestone()" class="milestoneBtn"> Add milestone </div><br/>
 
-  <li ng-repeat="milestone in goal.milestones" style="list-style: none;">
+  <li ng-repeat="milestone in goal.milestones">
 
-    <div style="margin:10px 0px;color:red;text-decoration: underline;" ng-click="deleteMilestone(goal['_id'], milestone.id, $index)"> Delete </div>
+    <div class="deleteBtn" ng-click="deleteMilestone(goal['_id'], milestone.id, $index)"> Delete </div>
 
     <div> Title </div>
     <input type="text" ng-model="milestone.title">

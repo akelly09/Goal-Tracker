@@ -5,29 +5,6 @@ var db        = {};
 var ObjectID  = require('mongodb').ObjectID;
 db.goals      = new datastore({ filename: 'db/goal.json', autoload: true });
 
-/*
-var id = new ObjectID().toHexString();
-
-var milestone = {
-  id: 1,
-  title:"Read ch.1 of book",
-  percentage:50,
-  completeDate:new Date()
-};
-
-var goal = {
-  title: 'Learn Japanese',
-  completeDate: new Date(),
-  milestones: []
-};
-
-//inserts a goal
-//db.goals.insert(goal);
-
-//inserts a milestone
-//db.goals.update({_id:"BwMFKOMq6hGRAU15"}, {$push:{milestones:milestone}});  
-
-*/
 
 module.exports = function(app) {
 
@@ -85,30 +62,24 @@ module.exports = function(app) {
 
   //delete milestone 
   app.delete('/api/goals/:goal_id/:milestone_id', function(req, res) {
-
     db.goals.update({ _id: req.params.goal_id }, { $pull: { milestones: {id: req.params.milestone_id} } }, {}, function () {
       res.send('Removed a milestone.');
     });
-
   });
 
 
   //update goal / milestones
   app.put('/api/goals/:goal_id', function(req, res) {
-
     db.goals.update({  _id: req.params.goal_id }, { $set: req.body }, { multi: true }, function (err, numReplaced) {
         res.send('Edited ' + numReplaced + ' goal');
     });
-
   });
 
 
   //default load index page
-  ///*
   app.get('*', function(req, res) {
     res.sendFile('index.html' , { root : __dirname});
   });
-  //*/
 
 };
 

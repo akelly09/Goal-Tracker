@@ -1,0 +1,60 @@
+html{
+  background-color: #ECF3F3;
+}
+
+.content{
+  margin: 5% 30%;
+  padding: 2%;
+  box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
+  background-color: #FFF;
+}
+
+.milestoneBtn{
+  text-decoration:underline;
+  color:blue;
+  cursor: pointer;
+}
+
+li{
+  list-style: none;
+}
+
+.deleteBtn{
+  margin-right: 10px;
+  color:red;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.navBtn{
+  text-decoration:none;
+  color:black;
+}
+
+.milestoneBlock{
+  display: inline-block;
+  margin: 15px;
+  margin-left: 0px;
+}
+
+.milestone{
+  margin: 25px 0px;
+}
+
+ul{
+  padding: 0px;
+}
+
+li a{
+  margin-right: 10px;
+}
+
+html{
+  font-family: 'Work Sans', sans-serif;
+}
+
+h2{
+  font-size: 16pt;
+  font-weight: normal;
+  color: #999;
+}
