@@ -1,11 +1,11 @@
-<div class="content">
+<div>
 
-  <h2> View Goal - {{goal.title}} </h2>
-  <div> {{goal.completeDate}} </div>
+  <h2> {{goal.title}} </h2>
+  <div> {{goal.completeDate | date}} </div>
 
   <br/>
 
-  <a ui-sref="editGoal({ goal_id: goal['_id'] })"> Edit goal </a><br/>
+  <a ui-sref="editGoal({ goal_id: goal['_id'] })"> Edit goal </a>
 
   <h2> Milestones </h2>
 
@@ -13,16 +13,12 @@
 
     <div> Title </div>
     <div ng-bind="milestone.title"> </div>
-
-    <br/>
+    
     <div> Date to complete </div>
-    <div ng-bind="milestone.completeDate"> </div>
+    <div ng-bind="milestone.completeDate | date"> </div>
 
-    <br/>
     <div> % Assigned </div>
     <div ng-bind="milestone.percentage"> </div>
-
-    <br/>
 
   </li>
 

@@ -1,38 +1,33 @@
-<div class="content">
+<div>
   
   <h2> Edit Goal </h2>
 
   <div> Title </div>
   <input type="text" ng-model="goal.title">
 
-  <br/><br/>
   <div> Date to complete </div>
   <input type="date" ng-model="goal.completeDate" format-date>
 
   <h2> Add Milestones </h2>
 
-  <div ng-click="addMilestone()" class="milestoneBtn"> Add milestone </div><br/>
+  <div ng-click="addMilestone()" class="milestoneBtn edit"> Add milestone </div>
 
   <li ng-repeat="milestone in goal.milestones">
 
-    <div class="deleteBtn" ng-click="deleteMilestone(goal['_id'], milestone.id, $index)"> Delete </div>
-
     <div> Title </div>
     <input type="text" ng-model="milestone.title">
-    <br/>
 
-    <br/>
     <div> Date to complete </div>
     <input type="date" ng-model="milestone.completeDate" format-date>
 
-    <br/><br/>
     <div> % Assigned </div>
     <input type="number" ng-model="milestone.percentage">
+
+    <div class="deleteBtn edit" ng-click="deleteMilestone(goal['_id'], milestone.id, $index)"> Delete Milestone </div>
 
   </li>
 
 
   <!-- Create Goal -->
-  <br/><br/><br/>
   <input type="button" value="Edit goal" ng-click="editGoal()">
 </div>

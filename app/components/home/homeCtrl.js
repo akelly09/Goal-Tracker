@@ -1,4 +1,6 @@
-angular.module('Home', ['HomeService']).controller('homeCtrl', ['$scope', 'goalService', function($scope, goalService) {
+var app = angular.module('Home', ['HomeService'])
+
+app.controller('homeCtrl', ['$scope', 'goalService', function($scope, goalService) {
   
 	$scope.goals = [];
 

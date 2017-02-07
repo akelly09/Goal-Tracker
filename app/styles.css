@@ -1,5 +1,6 @@
 html{
   background-color: #ECF3F3;
+  background-color: #C7EFCF;
 }
 
 .content{
@@ -15,15 +16,27 @@ html{
   cursor: pointer;
 }
 
+.milestoneBtn.edit{
+  margin-bottom: 15px;
+}
+
 li{
   list-style: none;
+}
+
+.goalList{
+  margin-bottom: 15px;
 }
 
 .deleteBtn{
   margin-right: 10px;
   color:red;
-  text-decoration: underline;
+  /*text-decoration: underline;*/
   cursor: pointer;
+}
+
+.deleteBtn.edit{
+  margin: 15px 0px;
 }
 
 .navBtn{
@@ -47,6 +60,7 @@ ul{
 
 li a{
   margin-right: 10px;
+  width: 83%;
 }
 
 html{
@@ -57,4 +71,26 @@ h2{
   font-size: 16pt;
   font-weight: normal;
   color: #999;
+  color: #333;
+}
+
+#noGoals{
+  margin: 15px 0px;
+}
+
+.goalOptions{
+  display: inline-block;
+}
+
+.goalOptions a{
+  margin-right: 12%;
+  color: #555;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+  width: 76%;
+  text-decoration: none;
+}
+
+div.goalOptions{
+  width: 100%;
 }

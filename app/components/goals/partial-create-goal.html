@@ -1,18 +1,17 @@
-<div class="content">
+<div>
 
   <h2> Create Goal </h2>
 
   <div> Title </div>
   <input type="text" ng-model="goal.title">
 
-  <br/><br/>
   <div> Date to complete </div>
   <input type="date" ng-model="goal.completeDate">
 
 
   <h2> Add Milestones </h2>
 
-  <div ng-click="addMilestone()" class="milestoneBtn"> Add milestone </div><br/>
+  <div ng-click="addMilestone()" class="milestoneBtn"> Add milestone </div>
 
   <li ng-repeat="milestone in goal.milestones">
 

@@ -10,8 +10,9 @@ module.exports = function(app) {
 
   //get goals and milestones
   app.get('/api/goals', function(req, res) {
-    db.goals.find({}, function (err, docs) {
-      res.json(docs);
+
+    db.goals.find({}, function (err, goals) {
+      res.json(goals);
     });
   });
 

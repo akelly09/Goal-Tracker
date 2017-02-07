@@ -98,4 +98,4 @@ app.directive("formatDate", function(){
       })
     }
   }
-})
+});
