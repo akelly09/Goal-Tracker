@@ -1,12 +1,9 @@
-<div>
+<section>
 
   <h2> Your Goals </h2>
   <ul>
     <li ng-repeat="goal in goals" class="goalList">
-      <div class="goalOptions">
-        <a ui-sref="viewGoal({ goal_id: goal['_id'] })" class="goalOptions"> {{goal.title}} - {{goal.completeDate | date}} </a>
-        <span class="deleteBtn goalOptions" ng-click="deleteGoal(goal['_id'], $index)"> Remove </span>
-      </div>
+      <a ui-sref="viewGoal({ goal_id: goal['_id'] })" class="goalLink"> {{goal.title}} - {{goal.completeDate | date}} </a>
     </li>
   </ul>
   <div id="noGoals" ng-show="goals.length == 0"> You have currently have no goals </div>
@@ -15,4 +12,4 @@
     <a ui-sref="createGoal()" class="navBtn"> Create goal </a>
   </button>
 
-</div>
+</section>

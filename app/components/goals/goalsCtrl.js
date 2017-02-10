@@ -9,6 +9,15 @@ app.controller('viewGoalCtrl', ['$scope','$http','$stateParams','$state', 'goalS
 		$scope.goal = data;
 	});
 
+  $scope.deleteGoal = function(goal_id){
+
+		goalService.deleteGoal(goal_id).success(function(data){
+			console.log(data);
+      $state.go('home', {});
+		});
+
+	}
+
 }]);
 
 

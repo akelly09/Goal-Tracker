@@ -1,9 +1,12 @@
 var app = angular.module('GoalTracker', ['ui.router','Home','Goals']);
 
-app.controller('MainCtrl', [
-'$scope',
-function($scope){
-  $scope.test = 'Hello Pie!';
+
+app.controller('MainCtrl', ['$scope', '$window', '$state', function($scope, $window, $state) {
+
+	$scope.goBack = function(){
+    $window.history.back();
+  }
+
 }]);
 
 

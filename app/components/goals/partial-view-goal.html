@@ -1,11 +1,14 @@
-<div>
+<section>
+
+  <div ng-click="goBack()"> <-- </div>
 
   <h2> {{goal.title}} </h2>
   <div> {{goal.completeDate | date}} </div>
 
-  <br/>
-
-  <a ui-sref="editGoal({ goal_id: goal['_id'] })"> Edit goal </a>
+  <div>
+    <a ui-sref="editGoal({ goal_id: goal['_id'] })"> Edit goal </a> | 
+    <span class="deleteBtn goalOptions" ng-click="deleteGoal(goal['_id'])"> Delete goal </span>
+  </div>
 
   <h2> Milestones </h2>
 
@@ -22,4 +25,4 @@
 
   </li>
 
-</div>
+</section>
