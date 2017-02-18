@@ -1,27 +1,43 @@
 <section>
 
-  <div ng-click="goBack()"> <-- </div>
+  <i class="fa fa-chevron-circle-left fa-2x" aria-hidden="true" ng-click="goBack()"></i>
 
   <h2> {{goal.title}} </h2>
   <div> {{goal.completeDate | date}} </div>
 
-  <div>
+  <div class="editDeleteBlock">
     <a ui-sref="editGoal({ goal_id: goal['_id'] })"> Edit goal </a> | 
     <span class="deleteBtn goalOptions" ng-click="deleteGoal(goal['_id'])"> Delete goal </span>
+  </div>
+
+  <div class="reasonBlock">
+    <div> Your reason for wanting to achieve this goal </div>
+    <div ng-bind="goal.reason"> </div>
+  </div>
+
+  <div class="rewardBlock">
+    <div> Your reward to yourself upon completion </div>
+    <div ng-bind="goal.reward"> </div>
   </div>
 
   <h2> Milestones </h2>
 
   <li ng-repeat="milestone in goal.milestones" style="list-style: none;">
 
-    <div> Title </div>
-    <div ng-bind="milestone.title"> </div>
+    <div>
+      <div> Title </div>
+      <div ng-bind="milestone.title"> </div>
+    </div>
     
-    <div> Date to complete </div>
-    <div ng-bind="milestone.completeDate | date"> </div>
+    <div>
+      <div> Date to complete </div>
+      <div ng-bind="milestone.completeDate | date"> </div>
+    </div>
 
-    <div> % Assigned </div>
-    <div ng-bind="milestone.percentage"> </div>
+    <div>
+      <div> % Assigned </div>
+      <div ng-bind="milestone.percentage"> </div>
+    </div>
 
   </li>
 

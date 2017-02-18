@@ -39,15 +39,14 @@ li{
   margin: 15px 0px;
 }
 
-.navBtn{
-  text-decoration:none;
-  color:black;
-}
-
 .milestoneBlock{
   display: inline-block;
-  margin: 15px;
+  /*margin: 15px;*/
   margin-left: 0px;
+}
+
+.milestoneTitle{
+  display: block;
 }
 
 .milestone{
@@ -85,4 +84,61 @@ h2{
   display: block;
   width: 100%;
   text-decoration: none;
+}
+
+textarea{
+  width: 100%;
+}
+
+
+.titleBlock, .dateBlock, .reasonBlock, .rewardBlock, .milestoneBlock{
+  margin-bottom: 15px;
+}
+
+
+.editDeleteBlock{
+  margin: 15px 0px;
+}
+
+
+.fa-chevron-circle-left{
+  color: #888;
+}
+
+.flat {
+  color: #fff;
+  background-color: #6496c8;
+  text-shadow: -1px 1px #417cb8;
+  border: none;
+  padding: 3px 15px;
+  font-size: 13pt;
+}
+
+.flat:hover,
+.flat.hover {
+  background-color: #346392;
+  text-shadow: -1px 1px #27496d;
+}
+
+.flat:active,
+.flat.active {
+  background-color: #27496d;
+  text-shadow: -1px 1px #193047;
+}
+
+.flat a{
+    text-decoration:none;
+    color: #FFF;
+}
+
+.createBtn{
+  background-color: #3D9970;
+}
+
+.createBtn:hover, .createBtn.hover{
+  background-color: #235021;
+}
+
+.titleBlock input{
+  width: 100%;
 }

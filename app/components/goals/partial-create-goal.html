@@ -1,14 +1,28 @@
 <section>
 
-  <div ng-click="goBack()"> <-- </div>
+  <i class="fa fa-chevron-circle-left fa-2x" aria-hidden="true" ng-click="goBack()"></i>
 
   <h2> Create Goal </h2>
 
-  <div> Title </div>
-  <input type="text" ng-model="goal.title">
+  <div class="titleBlock">
+    <div> Title </div>
+    <input type="text" ng-model="goal.title">
+  </div>
 
-  <div> Date to complete </div>
-  <input type="date" ng-model="goal.completeDate">
+  <div class="dateBlock">
+    <div> Date to complete </div>
+    <input type="date" ng-model="goal.completeDate">
+  </div>
+
+  <div  class="reasonBlock">
+    <div> Your reason for wanting to achieve this goal </div>
+    <textarea name="reason" ng-model="goal.reason" rows="4"></textarea>
+  </div>
+
+  <div class="rewardBlock">
+    <div> Your reward to yourself upon completion </div>
+    <textarea name="reward" ng-model="goal.reward" rows="4"></textarea>
+  </div>
 
 
   <h2> Add Milestones </h2>
@@ -19,7 +33,7 @@
 
     <div class="milestone">
 
-      <div>
+      <div class="milestoneBlock milestoneTitle">
         <div> Title </div>
         <input type="text" ng-model="milestone.title">
       </div>
@@ -42,6 +56,6 @@
 
 
   <!-- Create Goal -->
-  <input type="button" value="Create goal" ng-click="createGoal()">
+  <button class="flat createBtn" ng-click="createGoal()"> Create goal </button>
   
 </section>
