@@ -22,9 +22,10 @@
 
   <h2> Milestones </h2>
 
-  <li ng-repeat="milestone in goal.milestones" style="list-style: none;">
+  <li ng-repeat="milestone in goal.milestones" style="list-style: none;" class="milestone">
 
     <div>
+      <input type="checkbox" ng-model="milestone.complete" ng-click="milestoneChecked(goal['_id'], milestone.id)">
       <div> Title </div>
       <div ng-bind="milestone.title"> </div>
     </div>

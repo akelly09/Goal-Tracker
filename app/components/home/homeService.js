@@ -32,6 +32,13 @@ homeServices.factory('goalService', ['$http', function($http) {
     return $http.put('/api/goals/' + goal_id, goal);
   }
 
+  /*
+  --inactive--
+  goalService.toggleCheckbox = function(goal_id, milestones){
+    return $http.put('/api/goals/' + goal_id, milestones);
+  }
+  */
+
 
   return goalService; 
 

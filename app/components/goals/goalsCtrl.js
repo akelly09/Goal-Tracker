@@ -1,6 +1,17 @@
 var app = angular.module('Goals', []);
 
+var createMilestone = function(){
+  return {
+      completeDate: new Date(),
+      percentage: 100,
+      complete: false
+    };
+}
 
+
+/*
+ * Controller: View a goal
+ */
 app.controller('viewGoalCtrl', ['$scope','$http','$stateParams','$state', 'goalService', function($scope,$http,$stateParams,$state,goalService) {
 
   $scope.goal = {};
@@ -18,16 +29,24 @@ app.controller('viewGoalCtrl', ['$scope','$http','$stateParams','$state', 'goalS
 
 	}
 
+  $scope.milestoneChecked = function(goal_id, milestone_id){
+    
+    goalService.editGoal(goal_id, $scope.goal).success(function(data){
+      console.log(data);
+	  });
+
+  }
+
 }]);
 
 
+/*
+ * Controller: Create a goal
+ */
 app.controller('createGoalCtrl', ['$scope','goalService', '$state', function($scope, goalService, $state) {
 
   $scope.goal = {
-    milestones:[{
-      completeDate: new Date(),
-      percentage: 100
-    }]
+    milestones:[createMilestone()]
   };
 
   $scope.goal.completeDate = new Date();
@@ -42,13 +61,9 @@ app.controller('createGoalCtrl', ['$scope','goalService', '$state', function($sc
   }
 
   $scope.addMilestone = function(){
-    $scope.goal.milestones.push({
-      completeDate: new Date(),
-      percentage: 100
-    });
+    $scope.goal.milestones.push(createMilestone());
   }
 
-  //remove milestone from ui
    $scope.deleteMilestone = function(idx){
     $scope.goal.milestones.splice(idx, 1);
 	}
@@ -56,6 +71,9 @@ app.controller('createGoalCtrl', ['$scope','goalService', '$state', function($sc
 }]);
 
 
+/*
+ * Controller: Edit a goal
+ */
 app.controller('editGoalCtrl', ['$scope','$http','$stateParams','$state', 'goalService', function($scope,$http,$stateParams,$state,goalService) {
 
   $scope.goal = {};
@@ -74,10 +92,7 @@ app.controller('editGoalCtrl', ['$scope','$http','$stateParams','$state', 'goalS
   }
 
   $scope.addMilestone = function(){
-    $scope.goal.milestones.push({
-      completeDate: new Date(),
-      percentage: 100
-    });
+    $scope.goal.milestones.push(createMilestone());
   }
 
 

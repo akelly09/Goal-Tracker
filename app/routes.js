@@ -8,7 +8,7 @@ db.goals      = new datastore({ filename: 'db/goal.json', autoload: true });
 
 module.exports = function(app) {
 
-  //get goals and milestones
+  //get all goals and milestones
   app.get('/api/goals', function(req, res) {
 
     db.goals.find({}, function (err, goals) {
@@ -17,7 +17,7 @@ module.exports = function(app) {
   });
 
 
-  //get a goal and its milestones
+  //get one goal and its milestones
   app.get('/api/goals/:goal_id', function(req, res) {
     db.goals.find({_id: req.params.goal_id}, function (err, docs) {
 
@@ -71,10 +71,46 @@ module.exports = function(app) {
 
   //update goal / milestones
   app.put('/api/goals/:goal_id', function(req, res) {
+
+    var milestones = req.body.milestones;
+
+    for(let milestone of milestones){
+      if(!milestone.id){
+        milestone.id = new ObjectID().toHexString();
+      }
+    }
+
     db.goals.update({  _id: req.params.goal_id }, { $set: req.body }, { multi: true }, function (err, numReplaced) {
         res.send('Edited ' + numReplaced + ' goal');
     });
+
   });
+
+
+  /*
+  //inactive: toggle milestone status
+  app.put('/api/goals/:goal_id/:milestone_id', function(req, res) {
+
+  
+    var json = {
+      'complete':true
+    };
+
+    json = { 
+      milestones: {
+        id: req.params.milestone_id,
+        complete: false
+      } 
+    };
+
+    
+    db.goals.update({  _id: req.params.goal_id}, { $set: json }, {}, function (err, numReplaced) {
+        res.send('Edited ' + numReplaced + ' goal');
+    });
+   
+
+  });
+  */
 
 
   //default load index page
