@@ -3,7 +3,10 @@
   <h2> Your Goals </h2>
   <ul>
     <li ng-repeat="goal in goals" class="goalList">
-      <a ui-sref="viewGoal({ goal_id: goal['_id'] })" class="goalLink"> {{goal.title}} - {{goal.completeDate | date}} </a>
+      <div class="goalLink"> 
+        <a ui-sref="viewGoal({ goal_id: goal['_id'] })"> {{goal.title}} - {{goal.completeDate | date}} </a>
+        <div> Percentage Completed: {{goal.completePercentage}}% </div>
+      </div>
     </li>
   </ul>
   <div id="noGoals" ng-show="goals.length == 0"> You have currently have no goals </div>

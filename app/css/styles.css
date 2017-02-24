@@ -81,9 +81,14 @@ h2{
   color: #555;
   border-bottom: 1px solid #ddd;
   padding-bottom: 5px;
-  display: block;
   width: 100%;
-  text-decoration: none;
+}
+
+.goalLink a{
+    text-decoration: none;
+    color: #555;
+    margin-bottom: 5px;
+    display: block;
 }
 
 textarea{

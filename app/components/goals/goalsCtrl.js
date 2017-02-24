@@ -3,7 +3,6 @@ var app = angular.module('Goals', []);
 var createMilestone = function(){
   return {
       completeDate: new Date(),
-      percentage: 100,
       complete: false
     };
 }

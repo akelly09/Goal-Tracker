@@ -12,6 +12,27 @@ module.exports = function(app) {
   app.get('/api/goals', function(req, res) {
 
     db.goals.find({}, function (err, goals) {
+
+      var goalsCompleted = 0, milestonesLength;
+
+      for(let goal of goals){
+
+        milestonesLength = goal.milestones.length;
+
+        for(let milestone of goal.milestones){
+          milestone.id = new ObjectID().toHexString();
+          if(milestone.complete){
+            goalsCompleted++;
+          }
+        }
+
+        if(milestonesLength > 0){
+          goal.completePercentage = (goalsCompleted / milestonesLength) * 100;
+          goalsCompleted = 0;
+        }
+
+      }
+
       res.json(goals);
     });
   });
