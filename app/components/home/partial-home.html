@@ -5,7 +5,7 @@
     <li ng-repeat="goal in goals" class="goalList">
       <div class="goalLink"> 
         <a ui-sref="viewGoal({ goal_id: goal['_id'] })"> {{goal.title}} - {{goal.completeDate | date}} 
-          <div> Percentage Completed: {{goal.completePercentage}}% </div>
+          <div> Completed: {{goal.completePercentage}}% </div>
         </a>
       </div>
     </li>

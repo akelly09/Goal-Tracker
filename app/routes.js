@@ -27,7 +27,7 @@ module.exports = function(app) {
         }
 
         if(milestonesLength > 0){
-          goal.completePercentage = (goalsCompleted / milestonesLength) * 100;
+          goal.completePercentage = Math.round( (goalsCompleted / milestonesLength) * 100 );
           goalsCompleted = 0;
         }
 

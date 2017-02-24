@@ -1,4 +1,4 @@
-var app = angular.module('GoalTracker', ['ui.router','Home','Goals']);
+var app = angular.module('GoalTracker', ['ui.router','Home','Goals','angular-timeline']);
 
 
 app.controller('MainCtrl', ['$scope', '$window', '$state', function($scope, $window, $state) {
