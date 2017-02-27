@@ -95,6 +95,8 @@ module.exports = function(app) {
 
     var milestones = req.body.milestones;
 
+    var goalsCompleted = 0, milestonesLength;
+
     for(let milestone of milestones){
       if(!milestone.id){
         milestone.id = new ObjectID().toHexString();

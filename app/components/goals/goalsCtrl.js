@@ -17,21 +17,38 @@ app.controller('viewGoalCtrl', ['$scope','$http','$stateParams','$state', 'goalS
 
   goalService.getGoal($stateParams.goal_id).success(function(data){
 		$scope.goal = data;
+    //console.log(data);
 	});
 
   $scope.deleteGoal = function(goal_id){
 
 		goalService.deleteGoal(goal_id).success(function(data){
-			console.log(data);
+			//console.log(data);
       $state.go('home', {});
 		});
 
 	}
 
   $scope.milestoneChecked = function(goal_id, milestone_id){
+
+    var milestonesCompleted = 0, milestones = $scope.goal.milestones;
+
+    for(let milestone of milestones){
+      if(milestone.id == milestone_id){
+        milestone.complete = !milestone.complete;
+      }
+      if(milestone.complete){
+        milestonesCompleted++;
+      }
+    }
+
+    if(milestonesCompleted == milestones.length){
+      console.log('100%');
+      //console.log(milestonesCompleted);
+    }
     
     goalService.editGoal(goal_id, $scope.goal).success(function(data){
-      console.log(data);
+      //console.log(data);
 	  });
 
   }
@@ -53,7 +70,7 @@ app.controller('createGoalCtrl', ['$scope','goalService', '$state', function($sc
   $scope.createGoal = function(){
 
     goalService.createGoal($scope.goal).success(function(data){
-      console.log(data);
+      //console.log(data);
       $state.go('home', {});
     });
 
