@@ -150,3 +150,7 @@ textarea{
 .titleBlock input{
   width: 100%;
 }
+
+.reason{
+  font-weight: bold;
+}
