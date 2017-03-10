@@ -154,3 +154,11 @@ textarea{
 .reason{
   font-weight: bold;
 }
+
+.reminders li{
+  display: inline;
+  color: blue;
+  text-decoration: underline;
+  margin-right: 10px;
+  cursor: pointer;
+}
