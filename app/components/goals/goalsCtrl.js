@@ -62,7 +62,8 @@ app.controller('viewGoalCtrl', ['$scope','$http','$stateParams','$state', 'goalS
 app.controller('createGoalCtrl', ['$scope','goalService', '$state', function($scope, goalService, $state) {
 
   $scope.goal = {
-    milestones:[createMilestone()]
+    milestones:[createMilestone()],
+    reminder: "enable"
   };
 
   $scope.goal.completeDate = new Date();

@@ -14,6 +14,14 @@
     <input type="date" ng-model="goal.completeDate">
   </div>
 
+  <div>
+      <div> Reminders </div>
+      <ul class="reminders">
+        <input type="radio" value="disable" ng-model="goal.reminder"> Disable
+        <input type="radio" value="enable" ng-model="goal.reminder"> Enable
+      </ul>
+  </div>
+
   <div  class="reasonBlock">
     <div> Your reason for wanting to achieve this goal </div>
     <textarea name="reason" ng-model="goal.reason" rows="4"></textarea>
@@ -25,7 +33,7 @@
   </div>
 
 
-  <h2> Add Milestones </h2>
+  <h2> Milestones </h2>
 
   <div ng-click="addMilestone()" class="milestoneBtn"> Add milestone </div>
 

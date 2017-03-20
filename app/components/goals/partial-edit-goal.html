@@ -15,12 +15,10 @@
   </div>
 
   <div>
-      <div> Add Reminder </div>
+      <div> Reminder </div>
       <ul class="reminders">
-        <li> None </li>
-        <li> Daily </li>
-        <li> Weekly </li>
-        <li> Monthly </li>
+        <input type="radio" value="disable" ng-model="goal.reminder"> Disable
+        <input type="radio" value="enable" ng-model="goal.reminder"> Enable
       </ul>
   </div>
 
@@ -34,7 +32,7 @@
     <textarea name="reward" ng-model="goal.reward" rows="4"></textarea>
   </div>
 
-  <h2> Add Milestones </h2>
+  <h2> Milestones </h2>
 
   <div ng-click="addMilestone()" class="milestoneBtn edit"> Add milestone </div>
 

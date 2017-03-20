@@ -3,9 +3,6 @@ var express        = require('express');
 var app            = express();
 var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
-//var http           = require('http').Server(app);
-//var io             = require('socket.io')(http);
-//var schedule       = require('node-schedule');
 var cronJob        = require('cron').CronJob;
 
 
