@@ -7,3 +7,6 @@ This is a MEAN (Mongo, Express, Angular, Node) based website that allows users t
 - Breakdown goals into manageable milestones
 - Receive notifications via email / sms
 - Monitor overall progress of all goals
+
+### Track and update your goals via milestones
+![screenshot](img/meditation_view.png "Meditation View")
