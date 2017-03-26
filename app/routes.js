@@ -110,6 +110,33 @@ module.exports = function(app) {
   });
 
 
+  //get valid dates
+  app.get('/api/reminders', function(req, res) {
+
+    db.goals.find({}, function (err, goals) {
+
+      var reminders = [];
+      var d         = new Date();
+      var today     = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+
+      var d, goalDate;
+
+      for(let goal of goals){
+
+        goalDate = new Date(goal.completeDate);
+
+        if(goalDate >= today){
+          reminders.push(goalDate);
+        }
+      }
+
+      res.json(reminders);
+
+    });
+    
+  });
+
+
   /*
   //inactive: toggle milestone status
   app.put('/api/goals/:goal_id/:milestone_id', function(req, res) {

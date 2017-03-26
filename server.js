@@ -34,8 +34,8 @@ app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 require('./app/routes.js')(app);
 
 
-var job = new cronJob('*/5 * * * * *', function() {
-
+//var job = new cronJob('*/5 * * * * *', function() {
+/*
   console.log('hey');
 
   }, function () {
@@ -44,6 +44,7 @@ var job = new cronJob('*/5 * * * * *', function() {
   true, // Start the job right now
   null  // Time zone of this job.
 );
+*/
 
 
 // start app ===============================================
