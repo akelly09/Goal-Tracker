@@ -24,8 +24,9 @@ app.controller('homeCtrl', ['$scope', 'goalService', function($scope, goalServic
 
 	var data = [];
 
-	data.push([1,2,3,4,5]);
-	data.push([3,21,32]);
+	//dummy data for now
+	data.push([10,25,50]);
+	data.push([10,60,80,100]);
 
 	$scope.data = data;
 

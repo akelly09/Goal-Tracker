@@ -2,6 +2,8 @@
 
 This is a MEAN (Mongo, Express, Angular, Node) based website that allows users to set goals and track them as well as their associated milestones.
 
+*Created this site to get some experience with the MEAN Stack (still in progress)*
+
 ## Features
 - Set and track high level goals
 - Breakdown goals into manageable milestones
