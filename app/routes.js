@@ -8,6 +8,8 @@ db.goals      = new datastore({ filename: 'db/goal.json', autoload: true });
 
 module.exports = function(app) {
 
+  /*-----GOALS----*/
+
   //get all goals and milestones
   app.get('/api/goals', function(req, res) {
 
@@ -73,23 +75,6 @@ module.exports = function(app) {
   });
 
 
-  //insert milestone 
-  app.post('/api/goals/:goal_id', function(req, res) {
-    req.body.id = new ObjectID().toHexString();
-    //TODO: add error handling function!!
-    db.goals.update({_id:req.params.goal_id}, {$push:{milestones:req.body}});
-    res.send('Inserted a milestone.');
-  });
-
-
-  //delete milestone 
-  app.delete('/api/goals/:goal_id/:milestone_id', function(req, res) {
-    db.goals.update({ _id: req.params.goal_id }, { $pull: { milestones: {id: req.params.milestone_id} } }, {}, function () {
-      res.send('Removed a milestone.');
-    });
-  });
-
-
   //update goal / milestones
   app.put('/api/goals/:goal_id', function(req, res) {
 
@@ -110,7 +95,40 @@ module.exports = function(app) {
   });
 
 
+  /*-----MILESTONES----*/
+
+
+  //insert milestone 
+  app.post('/api/goals/:goal_id', function(req, res) {
+    req.body.id = new ObjectID().toHexString();
+    //TODO: add error handling function!!
+    db.goals.update({_id:req.params.goal_id}, {$push:{milestones:req.body}});
+    res.send('Inserted a milestone.');
+  });
+
+
+  //delete milestone 
+  app.delete('/api/goals/:goal_id/:milestone_id', function(req, res) {
+    db.goals.update({ _id: req.params.goal_id }, { $pull: { milestones: {id: req.params.milestone_id} } }, {}, function () {
+      res.send('Removed a milestone.');
+    });
+  });
+
+
+  /*
+  Cannot get this working
+  //update milestone
+  app.put('/api/goals/:goal_id/:milestone_id', function(req, res) {
+    db.goals.update({ _id: req.params.goal_id }, { $pull: { milestones: {id: req.params.milestone_id} } }, {}, function () {
+      res.send('Removed a milestone.');
+    });
+  });
+  */
+
+
+
   //get valid dates
+  //TODO: test and see if this could be better
   app.get('/api/reminders', function(req, res) {
 
     db.goals.find({}, function (err, goals) {
@@ -135,32 +153,6 @@ module.exports = function(app) {
     });
     
   });
-
-
-  /*
-  //inactive: toggle milestone status
-  app.put('/api/goals/:goal_id/:milestone_id', function(req, res) {
-
-  
-    var json = {
-      'complete':true
-    };
-
-    json = { 
-      milestones: {
-        id: req.params.milestone_id,
-        complete: false
-      } 
-    };
-
-    
-    db.goals.update({  _id: req.params.goal_id}, { $set: json }, {}, function (err, numReplaced) {
-        res.send('Edited ' + numReplaced + ' goal');
-    });
-   
-
-  });
-  */
 
 
   //default load index page
