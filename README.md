@@ -8,5 +8,5 @@ This is a MEAN (Mongo, Express, Angular, Node) based website that allows users t
 - Receive notifications via email / sms
 - Monitor overall progress of all goals
 
-### Screenshot - Viewing a Goal
-![screenshot](img/meditation_view.png "Meditation View")
+### Screenshot - Goal Page
+![screenshot](img/home_view1.png "Home View")
