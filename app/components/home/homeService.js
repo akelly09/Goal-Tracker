@@ -4,6 +4,7 @@ homeServices.factory('goalService', ['$http', function($http) {
 
   var goalService = {};
 
+  /***Goals***/
   goalService.getGoals = function(){
     return $http.get('/api/goals');
   }
@@ -20,6 +21,8 @@ homeServices.factory('goalService', ['$http', function($http) {
     return $http.delete('/api/goals/' + goal_id);
   }
 
+
+  /***Milestone***/
   goalService.insertMilestone = function(goal_id, milestone){
     return $http.post('/api/goals/' + goal_id, milestone);
   }
@@ -30,6 +33,12 @@ homeServices.factory('goalService', ['$http', function($http) {
 
   goalService.editGoal = function(goal_id, goal){
     return $http.put('/api/goals/' + goal_id, goal);
+  }
+
+
+  /***Charts***/
+  goalService.getCharts = function(){
+    return $http.get('/api/charts');
   }
 
   /*

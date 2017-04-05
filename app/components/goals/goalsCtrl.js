@@ -63,12 +63,20 @@ app.controller('createGoalCtrl', ['$scope','goalService', '$state', function($sc
 
   $scope.goal = {
     milestones:[createMilestone()],
-    reminder: "enable"
+    reminder: "enable",
+    progress: [
+        {
+        currentDate: new Date(),
+        percentage : 0
+      }
+    ]
   };
 
   $scope.goal.completeDate = new Date();
 
   $scope.createGoal = function(){
+
+    console.log($scope.goal);
 
     goalService.createGoal($scope.goal).success(function(data){
       //console.log(data);

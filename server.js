@@ -3,9 +3,6 @@ var express        = require('express');
 var app            = express();
 var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
-var cronJob        = require('cron').CronJob;
-
-
 
 
 // configuration ===========================================
@@ -33,25 +30,12 @@ app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 // configure our routes
 require('./app/routes.js')(app);
 
-
-//var job = new cronJob('*/5 * * * * *', function() {
-/*
-  console.log('hey');
-
-  }, function () {
-    // This function is executed when the job stops
-  },
-  true, // Start the job right now
-  null  // Time zone of this job.
-);
-*/
+//set up scheduled tasks
+require('./app/scheduler.js');
 
 
 // start app ===============================================
 app.listen(port);               
-
-// shoutout to the user                     
-console.log('Magic happens on port ' + port);
 
 // expose app           
 exports = module.exports = app;

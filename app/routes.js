@@ -21,6 +21,8 @@ module.exports = function(app) {
 
         milestonesLength = goal.milestones.length;
 
+        goal.completePercentage = 0;
+
         for(let milestone of goal.milestones){
           milestone.id = new ObjectID().toHexString();
           if(milestone.complete){
@@ -30,7 +32,6 @@ module.exports = function(app) {
 
         if(milestonesLength > 0){
           goal.completePercentage = Math.round( (goalsCompleted / milestonesLength) * 100 );
-          goalsCompleted = 0;
         }
 
       }
@@ -79,8 +80,6 @@ module.exports = function(app) {
   app.put('/api/goals/:goal_id', function(req, res) {
 
     var milestones = req.body.milestones;
-
-    var goalsCompleted = 0, milestonesLength;
 
     for(let milestone of milestones){
       if(!milestone.id){
@@ -149,6 +148,41 @@ module.exports = function(app) {
       }
 
       res.json(reminders);
+
+    });
+    
+  });
+
+
+    /*-----CHARTS----*/
+
+  //get data for charts
+  app.get('/api/charts', function(req, res) {
+
+    db.goals.find({}, function (err, goals) {
+
+      var series = [], allCharts = [], chartData;
+
+      for(let goal of goals){
+
+        series.push(goal.title);
+
+        chartData = []
+
+        for(let progress of goal.progress){
+          chartData.push(progress.percentage);
+        }
+
+        allCharts.push(chartData);
+
+      }
+
+      var chart = {
+        series: series,
+        data  : allCharts
+      };
+
+      res.json(chart);
 
     });
     
