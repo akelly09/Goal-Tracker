@@ -13,7 +13,7 @@ module.exports = function(app) {
   //get all goals and milestones
   app.get('/api/goals', function(req, res) {
 
-    db.goals.find({}, function (err, goals) {
+    db.goals.find({}).sort({completeDate: 1}).exec(function (err, goals) {
 
       var goalsCompleted = 0, milestonesLength;
 
@@ -159,7 +159,7 @@ module.exports = function(app) {
   //get data for charts
   app.get('/api/charts', function(req, res) {
 
-    db.goals.find({}, function (err, goals) {
+    db.goals.find({}).sort({completeDate: 1}).exec(function (err, goals) {
 
       var series = [], allCharts = [], chartData;
 

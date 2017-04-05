@@ -7,12 +7,19 @@ app.controller('homeCtrl', ['$scope', 'goalService', function($scope, goalServic
 
 	goalService.getGoals().success(function(data){
 		$scope.goals = data;
+		//console.log(data);
 	});
 
 
 	goalService.getCharts().success(function(charts){
-		$scope.series = charts.series;
-		$scope.data   = charts.data;
+
+		if(charts.data.length > 0){
+			$scope.series = charts.series;
+			$scope.data   = charts.data;
+		}else{
+			$scope.data   = [[-100]];
+		}
+		
 		//console.log(data);
 	});
 
@@ -22,7 +29,10 @@ app.config(['ChartJsProvider', function (ChartJsProvider) {
 	
 	ChartJsProvider.setOptions({
 		scales: {
-        yAxes: [{id: 'y-axis-1', type: 'linear', position: 'left', ticks: {min: 0, max:100}}]
+    	yAxes: [{id: 'y-axis-1', type: 'linear', position: 'left', ticks: {min: 0, max:100}}]
+    },
+			legend: {
+      	//display: true,
       }
 	});
 
