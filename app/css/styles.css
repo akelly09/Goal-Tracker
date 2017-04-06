@@ -49,11 +49,13 @@ li a{
    =============== */
 .goalList{
   margin-bottom: 15px;
+  clear: left;
 }
 
 #noGoals{
   margin: 15px 0px;
 }
+
 
 .goalLink{
   color: #555;
@@ -68,9 +70,6 @@ li a{
     display: block;
 }
 
-.goalLink div{
-  margin-top: 5px;
-}
 
 
 /* ===============

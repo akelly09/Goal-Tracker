@@ -4,30 +4,18 @@
 
   <canvas class="chart chart-line" chart-data="data" chart-labels="labels" chart-series="series"></canvas>
 
- <!--
- <round-progress
-    max="max"
-    current="current"
-    color="#45ccce"
-    bgcolor="#eaeaea"
-    radius="100"
-    stroke="20"
-    semi="true"
-    rounded="true"
-    clockwise="false"
-    responsive="false"
-    duration="800"
-    animation="easeInOutQuart"
-    animation-delay="0"></round-progress>
-    -->
-
   <h2> Your Goals </h2>
   <ul>
     <li ng-repeat="goal in goals" class="goalList">
-      <div class="goalLink"> 
-        <a ui-sref="viewGoal({ goal_id: goal['_id'] })"> {{goal.title}} - {{goal.completeDate | date}} 
-          <div> Completed: {{goal.completePercentage}}% </div>
+      <div class="goalLink">
+        <a ui-sref="viewGoal({ goal_id: goal['_id'] })"> {{goal.title}} 
+          <div>
+            <i class="fa fa-calendar" aria-hidden="true"></i> 
+            {{goal.completeDate | date}} 
+          </div>
+          <!--<div> Completed: {{goal.completePercentage}}% </div>-->
         </a>
+        
       </div>
     </li>
   </ul>
