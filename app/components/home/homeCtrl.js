@@ -3,8 +3,7 @@ var app = angular.module('Home', ['HomeService', 'chart.js'])
 app.controller('homeCtrl', ['$scope', 'goalService', function($scope, goalService) {
   
 	$scope.goals  = [];
-	$scope.labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-
+	$scope.labels = [];
 
 	var alterGoals = function(goals){
 		var incr = 0;
@@ -23,6 +22,8 @@ app.controller('homeCtrl', ['$scope', 'goalService', function($scope, goalServic
 
 
 	goalService.getCharts().success(function(charts){
+
+		$scope.labels = charts.labels;
 
 		if(charts.data.length > 0){
 			$scope.series = charts.series;

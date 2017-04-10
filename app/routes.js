@@ -156,33 +156,128 @@ module.exports = function(app) {
 
     /*-----CHARTS----*/
 
+  var createMapping = function(goal){
+
+    var date, month;
+    
+    var mapping = {};
+
+    for(let progress of goal.progress){
+
+      date  = new Date(progress.currentDate);
+      month = date.getMonth();
+
+      //console.log(date + " - " + month);
+
+      if(!mapping[month]){
+        mapping[month] = [];
+      }
+
+      mapping[month].push(progress.percentage);
+
+    }
+
+    return mapping;
+
+  }
+
+
+  var getEarliestMonth = function(goals){
+
+    var startMonth = new Date(goals[0].progress[0].currentDate);
+    var month;
+
+    for(let goal of goals){
+
+      month = new Date(goal.progress[0].currentDate);
+
+      if(month < startMonth){
+        startMonth = month;
+      }
+
+    }
+
+    return startMonth;
+
+  }
+
   //get data for charts
   app.get('/api/charts', function(req, res) {
 
     db.goals.find({}).sort({completeDate: 1}).exec(function (err, goals) {
 
-      var series = [], allCharts = [], chartData;
+      //TODO fix this
+      if(goals.length == 0){
+        return {
+          labels: [],
+          data: [[]],
+          series: []
+        };
+      }
 
+      var series = [], allCharts = [], labels = [], chartData = [];
+
+      var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+      var curDate = new Date();
+
+      //get earliest goal date
+      var startMonth = getEarliestMonth(goals); //is this necesary?
+      //new Date(goals[0].progress[0].currentDate);
+
+      console.log(startMonth);
+
+      //create and set end date
+      var endMonth = new Date(curDate);
+      endMonth.setMonth(curDate.getMonth()+1);
+
+      var month = startMonth.getMonth();
+
+      var mapping;
+
+      //set month label
+      for(var i = 0; i < months.length; i++){
+        labels.push(months[month]);
+        month = (month+1) % months.length;
+      }
+
+      //iterate over goals
       for(let goal of goals){
 
-        series.push(goal.title);
+        mapping   = createMapping(goal);
 
-        chartData = []
+        chartData = [];
 
-        for(let progress of goal.progress){
-          chartData.push(progress.percentage);
+        //iterate over the months
+        while(month != endMonth.getMonth()){
+
+          //if no data for this month add 0, otherwise add data at first of the month
+          if(!mapping[month]){
+            chartData.push(0);
+          }else{
+            chartData.push(mapping[month][0]);
+          }
+
+          //console.log(endMonth.getMonth());
+
+          month = (month+1) % months.length;
         }
 
         allCharts.push(chartData);
+        series.push(goal.title);
 
       }
 
-      var chart = {
-        series: series,
-        data  : allCharts
-      };
+      //console.log(mapping);
 
-      res.json(chart);
+      var myData = [[null,null,0,5,50]];
+   
+      res.json({
+        labels: labels,
+        data: allCharts,
+        //data: myData,
+        series: series
+      });
 
     });
     

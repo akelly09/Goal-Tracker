@@ -9,6 +9,7 @@ html{
 body{
   font-family: 'Work Sans', sans-serif;
   line-height: 1.5;
+  color: #555;
 }
 
 section{
@@ -44,10 +45,15 @@ li a{
 }
 
 
+
 /* ===============
    HOME 
    =============== */
-.goalList{
+.chartOptions li{
+  display: inline;
+}
+
+.goalList li{
   margin-bottom: 15px;
   clear: left;
 }
@@ -58,16 +64,19 @@ li a{
 
 
 .goalLink{
-  color: #555;
   border-bottom: 1px solid #ddd;
   padding-bottom: 5px;
   width: 100%;
 }
 
+.goalLink .goalTitle{
+  font-size: 14pt;
+}
+
 .goalLink a{
     text-decoration: none;
-    color: #555;
     display: block;
+    color: inherit;
 }
 
 
@@ -78,6 +87,7 @@ li a{
 .milestone{
   margin: 25px 0px;
 }
+
 
 
 /* ===============
@@ -92,12 +102,14 @@ li a{
 }
 
 
+
 /* ===============
    EDIT GOAL 
    =============== */
 textarea{
   width: 100%;
 }
+
 
 
 /* ===============
@@ -145,6 +157,7 @@ textarea{
 .titleBlock, .dateBlock, .reasonBlock, .rewardBlock, .milestoneBlock{
   margin-bottom: 15px;
 }
+
 
 
 /* ===============

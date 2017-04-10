@@ -4,11 +4,17 @@
 
   <canvas class="chart chart-line" chart-data="data" chart-labels="labels" chart-series="series"></canvas>
 
+  <ul class="chartOptions">
+    <li> Weekly | </li>
+    <li> Monthly </li>
+  </ul>
+
   <h2> Your Goals </h2>
-  <ul>
-    <li ng-repeat="goal in goals" class="goalList">
+  <ul class="goalList">
+    <li ng-repeat="goal in goals">
       <div class="goalLink">
-        <a ui-sref="viewGoal({ goal_id: goal['_id'] })"> {{goal.title}} 
+        <a ui-sref="viewGoal({ goal_id: goal['_id'] })"> 
+          <span class="goalTitle">{{goal.title}}</span> 
           <div>
             <i class="fa fa-calendar" aria-hidden="true"></i> 
             {{goal.completeDate | date}} 
